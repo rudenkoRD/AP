@@ -2,7 +2,6 @@ package lab1;
 
 import java.util.Scanner;
 
-
 /**
  * This class solves task for Lab1, 22 variant
  *
@@ -14,7 +13,6 @@ public class Lab1 {
     public static void main(String[] args) {
         new Lab1().run(args);
     }
-
 
     /**
      * Performs necessary calculations and outputs result for Lab1
