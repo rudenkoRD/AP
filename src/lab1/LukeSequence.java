@@ -36,6 +36,7 @@ public class LukeSequence implements Sequence {
      */
     @Override
     public long getSumOfFirstNNumbers() {
+        if (amountOfNumbers < 1) return 0;
         return getNLukeNumber(amountOfNumbers + 1) - 1;
     }
 
@@ -46,7 +47,6 @@ public class LukeSequence implements Sequence {
      * @param n from 1 to 89
      */
     private long getNLukeNumber(int n) {
-        if (n <= 0) return 0;
         if (n <= 67) return getNLukeNumberFast(n);
         long prev = 2;
         long cur = 1;
