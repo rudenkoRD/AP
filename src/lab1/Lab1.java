@@ -45,7 +45,7 @@ public class Lab1 {
      * Reads number from terminal
      */
     int readLukeNumberFromTerminal() {
-        System.out.println("Enter amount of Luke numbers to calculate sum(up to 90): ");
+        System.out.println("Enter amount of Luke numbers to calculate sum: ");
         Scanner input = new Scanner(System.in);
         return input.nextInt();
     }
