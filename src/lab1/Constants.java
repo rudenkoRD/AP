@@ -7,6 +7,7 @@ package lab1;
  * @version 1.0.0
  */
 public class Constants {
+    static int MAX_FAST_LUKE_NUMBER = 67;
     static int MAX_LUKE_NUMBER = 89;
     static double GOLDEN_RATIO = (1 + Math.sqrt(5)) / 2.0;
 }

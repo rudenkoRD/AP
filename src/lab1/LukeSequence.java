@@ -47,7 +47,7 @@ public class LukeSequence implements Sequence {
      * @param n from 1 to 89
      */
     private long getNLukeNumber(int n) {
-        if (n <= 67) return getNLukeNumberFast(n);
+        if (n <= Constants.MAX_FAST_LUKE_NUMBER) return getNLukeNumberFast(n);
         long prev = 2;
         long cur = 1;
         long temp;
