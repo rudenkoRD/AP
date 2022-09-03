@@ -6,7 +6,7 @@ public class Student {
     private final int id;
     private final String firstName;
     private final String lastName;
-    private final String patronymic;
+    private final String fathersName;
     private final Date birthday;
     private final String address;
     private final String phone;
@@ -18,7 +18,7 @@ public class Student {
             int id,
             String firstName,
             String lastName,
-            String patronymic,
+            String fathersName,
             Date birthday,
             String address,
             String phone,
@@ -29,7 +29,7 @@ public class Student {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.patronymic = patronymic;
+        this.fathersName = fathersName;
         this.birthday = birthday;
         this.address = address;
         this.phone = phone;
@@ -56,7 +56,7 @@ public class Student {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", patronymic='" + patronymic + '\'' +
+                ", fathersName='" + fathersName + '\'' +
                 ", birthday=" + birthday +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
