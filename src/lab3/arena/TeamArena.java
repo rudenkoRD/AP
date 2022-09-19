@@ -51,11 +51,11 @@ public class TeamArena implements Arena, Serializable {
             int target = random.nextInt(defenders.size());
 
             defenders.get(target).receiveAttack(attackers.get(i).attack());
-
             if (!defenders.get(target).isAlive()) defenders.remove(target);
-            if (!attackers.get(i).isAlive()) attackers.remove(i);
             if (attackers.isEmpty() || defenders.isEmpty()) break;
         }
+
+        attackers.removeIf(droid -> !droid.isAlive());
     }
 
     private void printResults() {
