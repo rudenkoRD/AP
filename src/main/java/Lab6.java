@@ -1,6 +1,3 @@
-import commands.Command;
-import commands.OpenMenuCommand;
-
 import menu.DocumentationMenuCommand;
 import menu.ExitCommand;
 import menu.Menu;
@@ -20,7 +17,6 @@ public class Lab6 {
                 new DocumentationMenuCommand(),
                 new ExitCommand()
         });
-        Command openMenuCommand = new OpenMenuCommand(menu);
-        new App(openMenuCommand).startApp();
+        menu.startShowing();
     }
 }
