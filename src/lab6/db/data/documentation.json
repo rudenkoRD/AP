@@ -1,0 +1,3 @@
+{
+  "text": "Welcome to MyPlanes\nList of functionality:\n1.Pilots management\n\tadd pilots\n\tget pilots statuses\n\tsort pilots by age\n\tsort pilots by salary\n2.Planes management\n\tadd plane\n\tget planes statuses\n\tsort planes by capacity\n\tsort planes by flight distance\n3.Airports management\n\tadd airport\n\tshow number of planes in airports\n4.Schedule management\n\tadd flight\n\tupdate flight\n\tsort planes by remaining fly time\n"
+}

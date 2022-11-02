@@ -1,0 +1,26 @@
+[
+  {
+    "birthday": "25\/03\/2004",
+    "name": "Ruslan",
+    "flyingHours": 100.0,
+    "id": 1,
+    "salary": 10000,
+    "type": "CAPTAIN"
+  },
+  {
+    "birthday": "25\/04\/2005",
+    "name": "Roman",
+    "flyingHours": 40.0,
+    "id": 2,
+    "salary": 5000,
+    "type": "SECOND_PILOT"
+  },
+  {
+    "birthday": "25\/05\/2006",
+    "name": "Tom",
+    "flyingHours": 200.0,
+    "id": 3,
+    "salary": 50000,
+    "type": "CAPTAIN"
+  }
+]

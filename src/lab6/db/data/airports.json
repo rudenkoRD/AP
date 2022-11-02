@@ -1,0 +1,27 @@
+[
+  {
+    "maxCapacity": 50,
+    "location": "Kiev",
+    "id": 1
+  },
+  {
+    "maxCapacity": 30,
+    "location": "Odessa",
+    "id": 2
+  },
+  {
+    "maxCapacity": 40,
+    "location": "Lviv",
+    "id": 3
+  },
+  {
+    "maxCapacity": 30,
+    "location": "",
+    "id": 4
+  },
+  {
+    "maxCapacity": 100,
+    "location": "somewhere",
+    "id": 4
+  }
+]

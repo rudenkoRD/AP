@@ -1,0 +1,23 @@
+[
+  {
+    "maxFlightDistance": 4000.0,
+    "id": 1,
+    "type": "CARGO",
+    "fuelConsumption": 100.0,
+    "capacity": 400
+  },
+  {
+    "maxFlightDistance": 8000.0,
+    "id": 2,
+    "type": "COMMERCIAL",
+    "fuelConsumption": 100.0,
+    "capacity": 200
+  },
+  {
+    "maxFlightDistance": 2000.0,
+    "id": 3,
+    "type": "PRIVATE",
+    "fuelConsumption": 10.0,
+    "capacity": 6
+  }
+]
