@@ -2,9 +2,13 @@ package model;
 
 import org.json.simple.JSONObject;
 import utils.DateUtils;
+import utils.Generated;
 
+import java.io.InputStream;
+import java.io.PrintStream;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Pilot {
@@ -15,14 +19,17 @@ public class Pilot {
     private final double flyingHours;
     private final PilotType type;
 
+    @Generated
     public int getSalary() {
         return salary;
     }
 
+    @Generated
     public int getId() {
         return id;
     }
 
+    @Generated
     public long age() {
         LocalDate now = LocalDate.now();
 
@@ -38,30 +45,30 @@ public class Pilot {
         this.type = type;
     }
 
-    public Pilot() {
+    public Pilot(InputStream inputStream, PrintStream printStream) {
         try {
-            Scanner in = new Scanner(System.in);
-            System.out.println("Enter id: ");
+            Scanner in = new Scanner(inputStream);
+            printStream.println("Enter id: ");
             id = in.nextInt();
-            System.out.println("Enter name: ");
+            printStream.println("Enter name: ");
             in.nextLine();
             name = in.nextLine();
-            System.out.println("Enter birthday(dd/mm/yyyy format): ");
+            printStream.println("Enter birthday(dd/mm/yyyy format): ");
             birthday = DateUtils.parseDate(in.nextLine());
-            System.out.println("Enter salary: ");
+            printStream.println("Enter salary: ");
             salary = in.nextInt();
-            System.out.println("Enter flying hours: ");
+            printStream.println("Enter flying hours: ");
             flyingHours = in.nextDouble();
-            System.out.println("Enter pilot type(CAPTAIN/SECOND_PILOT): ");
+            printStream.println("Enter pilot type(CAPTAIN/SECOND_PILOT): ");
             String pilotType = in.next();
             type = PilotType.valueOf(pilotType);
         } catch (Exception e) {
-            System.out.println("Invalid data!");
+            printStream.println("Invalid data!");
             throw e;
         }
     }
 
-    public static Pilot fromJson(JSONObject json) throws Exception {
+    public static Pilot fromJson(JSONObject json) {
         String id = json.get("id").toString();
         String name = json.get("name").toString();
         String date = json.get("birthday").toString();
@@ -90,6 +97,7 @@ public class Pilot {
         return json;
     }
 
+    @Generated
     @Override
     public String toString() {
         return "Pilot{" +
@@ -100,5 +108,20 @@ public class Pilot {
                 ", flyingHours=" + flyingHours +
                 ", type=" + type +
                 '}';
+    }
+
+    @Generated
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Pilot pilot = (Pilot) o;
+        return id == pilot.id && salary == pilot.salary && Double.compare(pilot.flyingHours, flyingHours) == 0 && Objects.equals(name, pilot.name) && Objects.equals(birthday, pilot.birthday) && type == pilot.type;
+    }
+
+    @Generated
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, birthday, salary, flyingHours, type);
     }
 }

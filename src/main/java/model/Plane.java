@@ -1,7 +1,11 @@
 package model;
 
 import org.json.simple.JSONObject;
+import utils.Generated;
 
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Plane {
@@ -11,14 +15,17 @@ public class Plane {
     private final int capacity;
     private final double maxFlightDistance;
 
+    @Generated
     public int getId() {
         return id;
     }
 
+    @Generated
     public int getCapacity() {
         return capacity;
     }
 
+    @Generated
     public double getMaxFlightDistance() {
         return maxFlightDistance;
     }
@@ -31,21 +38,21 @@ public class Plane {
         this.maxFlightDistance = maxFlightDistance;
     }
 
-    public Plane() {
+    public Plane(InputStream inputStream, PrintStream printStream) {
         try {
-            Scanner in = new Scanner(System.in);
-            System.out.println("Enter id: ");
+            Scanner in = new Scanner(inputStream);
+            printStream.println("Enter id: ");
             id = in.nextInt();
-            System.out.println("Enter Type(CARGO/PRIVATE/COMMERCIAL): ");
+            printStream.println("Enter Type(CARGO/PRIVATE/COMMERCIAL): ");
             type = PlaneType.valueOf(in.next().toUpperCase());
-            System.out.println("Enter fuel consumption: ");
+            printStream.println("Enter fuel consumption: ");
             fuelConsumption = in.nextDouble();
-            System.out.println("Enter capacity: ");
+            printStream.println("Enter capacity: ");
             capacity = in.nextInt();
-            System.out.println("Enter maximum flight distance: ");
+            printStream.println("Enter maximum flight distance: ");
             maxFlightDistance = in.nextDouble();
         } catch (Exception e) {
-            System.out.println("Invalid data!");
+            printStream.println("Invalid data!");
             throw e;
         }
     }
@@ -76,6 +83,7 @@ public class Plane {
         return json;
     }
 
+    @Generated
     @Override
     public String toString() {
         return "Plane{" +
@@ -85,5 +93,20 @@ public class Plane {
                 ", capacity=" + capacity +
                 ", maxFlightDistance=" + maxFlightDistance +
                 '}';
+    }
+
+    @Generated
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Plane plane = (Plane) o;
+        return id == plane.id && Double.compare(plane.fuelConsumption, fuelConsumption) == 0 && capacity == plane.capacity && Double.compare(plane.maxFlightDistance, maxFlightDistance) == 0 && type == plane.type;
+    }
+
+    @Generated
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, type, fuelConsumption, capacity, maxFlightDistance);
     }
 }

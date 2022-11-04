@@ -3,9 +3,14 @@ package model;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import utils.DateUtils;
+import utils.Generated;
 
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Flight {
@@ -17,41 +22,49 @@ public class Flight {
     private final int planeId;
     private final int[] pilotIds;
 
+    @Generated
     public int getId() {
         return id;
     }
 
+    @Generated
     public int getStartAirportId() {
         return startAirportId;
     }
 
+    @Generated
     public int getArrivalAirportId() {
         return arrivalAirportId;
     }
 
+    @Generated
     public LocalDateTime getStartTime() {
         return startTime;
     }
 
+    @Generated
     public LocalDateTime getEndTime() {
         return endTime;
     }
 
+    @Generated
     public int getPlaneId() {
         return planeId;
     }
 
+    @Generated
     public int[] getPilotIds() {
         return pilotIds;
     }
 
-    public boolean isNow() {
-        LocalDateTime now = LocalDateTime.now();
-        return startTime.isBefore(now) && endTime.isAfter(now);
-    }
-
+    @Generated
     public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
+    }
+
+    public boolean isNow(Clock clock) {
+        LocalDateTime now = LocalDateTime.now(clock);
+        return startTime.isBefore(now) && endTime.isAfter(now);
     }
 
     public Flight(int id, int startAirportId, int arrivalAirportId, LocalDateTime startTime, LocalDateTime endTime, int planId, int[] pilotIds) {
@@ -64,26 +77,26 @@ public class Flight {
         this.pilotIds = pilotIds;
     }
 
-    public Flight() {
+    public Flight(InputStream inputStream, PrintStream printStream) {
         try {
-            Scanner in = new Scanner(System.in);
-            System.out.println("Enter id: ");
+            Scanner in = new Scanner(inputStream);
+            printStream.println("Enter id: ");
             id = in.nextInt();
-            System.out.println("Enter start airport id: ");
+            printStream.println("Enter start airport id: ");
             startAirportId = in.nextInt();
-            System.out.println("Enter arrival airport id: ");
+            printStream.println("Enter arrival airport id: ");
             arrivalAirportId = in.nextInt();
-            System.out.println("Enter start time(dd/mm/yyyy hh:mm format): ");
+            printStream.println("Enter start time(dd/mm/yyyy hh:mm format): ");
             in.nextLine();
             startTime = DateUtils.parseTime(in.nextLine());
-            System.out.println("Enter end time(dd/mm/yyyy hh:mm format): ");
+            printStream.println("Enter end time(dd/mm/yyyy hh:mm format): ");
             endTime = DateUtils.parseTime(in.nextLine());
-            System.out.println("Enter plane id: ");
+            printStream.println("Enter plane id: ");
             planeId = in.nextInt();
-            System.out.println("Enter pilot ids(separated by space): ");
+            printStream.println("Enter pilot ids(separated by space): ");
             pilotIds = Arrays.stream(in.next().split(" ")).mapToInt(Integer::parseInt).toArray();
         } catch (Exception e) {
-            System.out.println("Invalid data");
+            printStream.println("Invalid data");
             throw e;
         }
     }
@@ -128,6 +141,7 @@ public class Flight {
         return json;
     }
 
+    @Generated
     @Override
     public String toString() {
         return "Flight{" +
@@ -139,5 +153,22 @@ public class Flight {
                 ", planId=" + planeId +
                 ", pilotIds=" + Arrays.toString(pilotIds) +
                 '}';
+    }
+
+    @Generated
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Flight flight = (Flight) o;
+        return id == flight.id && startAirportId == flight.startAirportId && arrivalAirportId == flight.arrivalAirportId && planeId == flight.planeId && Objects.equals(startTime, flight.startTime) && Objects.equals(endTime, flight.endTime) && Arrays.equals(pilotIds, flight.pilotIds);
+    }
+
+    @Generated
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(id, startAirportId, arrivalAirportId, startTime, endTime, planeId);
+        result = 31 * result + Arrays.hashCode(pilotIds);
+        return result;
     }
 }

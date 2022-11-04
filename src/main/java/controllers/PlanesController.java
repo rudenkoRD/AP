@@ -5,6 +5,7 @@ import db.schedule.ScheduleRepository;
 import model.Flight;
 import model.Plane;
 
+import java.time.Clock;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,7 +25,7 @@ public class PlanesController {
 
         planes.forEach(plane -> {
             List<Flight> currentPlaneFlights = flights.stream().filter(flight -> {
-                if (!flight.isNow()) return false;
+                if (!flight.isNow(Clock.systemDefaultZone())) return false;
                 return flight.getPlaneId() == plane.getId();
             }).collect(Collectors.toList());
 
@@ -35,7 +36,7 @@ public class PlanesController {
 
     public void addPlane() {
         try {
-            repository.addPlane(new Plane());
+            repository.addPlane(new Plane(System.in, System.out));
         } catch (Exception e) {
             System.out.println("Failed to add plane");
         }

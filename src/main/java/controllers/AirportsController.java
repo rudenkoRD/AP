@@ -54,7 +54,7 @@ public class AirportsController {
 
     public void addAirport() {
         try {
-            repository.addAirport(new Airport());
+            repository.addAirport(new Airport(System.in, System.out));
         } catch (Exception e) {
             System.out.println("Failed to add airport");
         }

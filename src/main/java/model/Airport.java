@@ -1,7 +1,11 @@
 package model;
 
 import org.json.simple.JSONObject;
+import utils.Generated;
 
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Airport {
@@ -15,21 +19,22 @@ public class Airport {
         this.maxCapacity = maxCapacity;
     }
 
+    @Generated
     public int getId() {
         return id;
     }
 
-    public Airport() {
+    public Airport(InputStream inputStream, PrintStream printStream) {
         try {
-            Scanner in = new Scanner(System.in);
-            System.out.println("Enter id: ");
+            Scanner in = new Scanner(inputStream);
+            printStream.println("Enter id: ");
             id = in.nextInt();
-            System.out.println("Enter location: ");
+            printStream.println("Enter location: ");
             location = in.next();
-            System.out.println("Enter max capacity: ");
+            printStream.println("Enter max capacity: ");
             maxCapacity = in.nextInt();
         } catch (Exception e) {
-            System.out.println("Invalid data!");
+            printStream.println("Invalid data!");
             throw e;
         }
     }
@@ -53,6 +58,7 @@ public class Airport {
         return json;
     }
 
+    @Generated
     @Override
     public String toString() {
         return "Airport{" +
@@ -60,6 +66,21 @@ public class Airport {
                 ", location='" + location + '\'' +
                 ", maxCapacity=" + maxCapacity +
                 '}';
+    }
+
+    @Generated
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Airport airport = (Airport) o;
+        return id == airport.id && maxCapacity == airport.maxCapacity && Objects.equals(location, airport.location);
+    }
+
+    @Generated
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, location, maxCapacity);
     }
 }
 

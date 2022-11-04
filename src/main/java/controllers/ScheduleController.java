@@ -21,7 +21,7 @@ public class ScheduleController {
 
     public void addFlightToSchedule() {
         try {
-            repository.addFlight(new Flight());
+            repository.addFlight(new Flight(System.in, System.out));
         } catch (Exception e) {
             System.out.println("Failed to add flight");
         }
