@@ -1,5 +1,7 @@
 package controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import persistence.airport.AirportsRepository;
 import persistence.schedule.ScheduleRepository;
 import model.Airport;
@@ -12,12 +14,15 @@ import java.util.*;
 import static java.util.stream.Collectors.groupingBy;
 
 public class AirportsController {
+    private static  final Logger logger = LoggerFactory.getLogger(AirportsController.class);
+
     private final AirportsRepository repository;
     private final ScheduleRepository scheduleRepository;
 
     public AirportsController(AirportsRepository repository, ScheduleRepository scheduleRepository) {
         this.repository = repository;
         this.scheduleRepository = scheduleRepository;
+        logger.info("Created airports controller");
     }
 
     public void getNumberOfPlanesInAirports(Clock clock) {
@@ -50,12 +55,15 @@ public class AirportsController {
 
         res.forEach((airportId, numberOfPlanes) ->
                 System.out.printf("Airport #%d contains %d plane(s)\n", airportId, numberOfPlanes));
+
+        logger.info("Got number of planes in airport");
     }
 
     public void addAirport() {
         try {
             repository.addAirport(new Airport(System.in, System.out));
         } catch (Exception e) {
+            logger.error("Failed to add airport", e);
             System.out.println("Failed to add airport");
         }
     }
