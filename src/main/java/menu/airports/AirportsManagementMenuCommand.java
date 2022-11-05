@@ -1,8 +1,8 @@
 package menu.airports;
 
 import controllers.AirportsController;
-import db.airport.AppAirportsRepository;
-import db.schedule.AppScheduleRepository;
+import persistence.airport.AppAirportsRepository;
+import persistence.schedule.AppScheduleRepository;
 import menu.ExitCommand;
 import menu.Menu;
 import menu.MenuCommand;

@@ -1,9 +1,10 @@
-package db.airport;
+package persistence.airport;
 
 import model.Airport;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import utils.IgnoreInTests;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -11,8 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AppAirportsRepository implements AirportsRepository {
-    static private final String FILE = "src/lab6/db/data/airports.json";
+    static private final String FILE = "src/main/resources/airports.json";
 
+    @IgnoreInTests
     @Override
     public List<Airport> readAirports() {
         JSONParser jsonParser = new JSONParser();
@@ -34,6 +36,7 @@ public class AppAirportsRepository implements AirportsRepository {
         }
     }
 
+    @IgnoreInTests
     @Override
     public void addAirport(Airport newAirport) {
         List<Airport> airports = readAirports();

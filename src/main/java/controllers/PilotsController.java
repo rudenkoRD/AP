@@ -1,7 +1,7 @@
 package controllers;
 
-import db.pilot.PilotsRepository;
-import db.schedule.ScheduleRepository;
+import persistence.pilot.PilotsRepository;
+import persistence.schedule.ScheduleRepository;
 import model.Flight;
 import model.Pilot;
 
@@ -27,14 +27,14 @@ public class PilotsController {
         }
     }
 
-    public void showPilotStatuses() {
+    public void showPilotStatuses(Clock clock) {
         List<Pilot> pilots = repository.readPilots();
 
         List<Flight> flights = scheduleRepository.loadSchedule();
 
         pilots.forEach(pilot -> {
             List<Flight> currentPilotFlights = flights.stream().filter(flight -> {
-                if (!flight.isNow(Clock.systemDefaultZone())) return false;
+                if (!flight.isNow(clock)) return false;
 
                 int[] ids = flight.getPilotIds();
                 for (int id : ids) if (id == pilot.getId()) return true;

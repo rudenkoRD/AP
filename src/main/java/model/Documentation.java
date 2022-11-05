@@ -1,7 +1,7 @@
 package model;
 
 import org.json.simple.JSONObject;
-import utils.Generated;
+import utils.IgnoreInTests;
 
 import java.util.Objects;
 
@@ -18,13 +18,13 @@ public class Documentation {
         );
     }
 
-    @Generated
+    @IgnoreInTests
     @Override
     public String toString() {
         return text;
     }
 
-    @Generated
+    @IgnoreInTests
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -33,7 +33,7 @@ public class Documentation {
         return Objects.equals(text, that.text);
     }
 
-    @Generated
+    @IgnoreInTests
     @Override
     public int hashCode() {
         return Objects.hash(text);

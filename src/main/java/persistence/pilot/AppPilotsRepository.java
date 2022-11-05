@@ -1,9 +1,10 @@
-package db.pilot;
+package persistence.pilot;
 
 import model.Pilot;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import utils.IgnoreInTests;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -11,8 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AppPilotsRepository implements PilotsRepository {
-    private static final String FILE = "src/lab6/db/data/pilots.json";
+    private static final String FILE = "src/main/resources/pilots.json";
 
+    @IgnoreInTests
     @Override
     public List<Pilot> readPilots() {
         JSONParser jsonParser = new JSONParser();
@@ -34,6 +36,7 @@ public class AppPilotsRepository implements PilotsRepository {
         }
     }
 
+    @IgnoreInTests
     @Override
     public void addPilot(Pilot newPilot) {
         List<Pilot> pilots = readPilots();

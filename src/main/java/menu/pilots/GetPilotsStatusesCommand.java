@@ -3,6 +3,8 @@ package menu.pilots;
 import controllers.PilotsController;
 import menu.MenuCommand;
 
+import java.time.Clock;
+
 public class GetPilotsStatusesCommand implements MenuCommand {
     final PilotsController controller;
 
@@ -12,7 +14,7 @@ public class GetPilotsStatusesCommand implements MenuCommand {
 
     @Override
     public void execute() {
-        controller.showPilotStatuses();
+        controller.showPilotStatuses(Clock.systemDefaultZone());
     }
 
     @Override

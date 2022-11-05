@@ -2,8 +2,7 @@ package menu;
 
 public class ExitCommand implements MenuCommand {
     @Override
-    public void execute() {
-    }
+    public void execute() {}
 
     @Override
     public String menuOptionString() {

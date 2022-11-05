@@ -1,4 +1,4 @@
-package db.schedule;
+package persistence.schedule;
 
 import model.Flight;
 

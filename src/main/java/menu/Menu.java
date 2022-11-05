@@ -1,38 +1,34 @@
 package menu;
 
 import commands.Command;
-
-import java.io.InputStream;
-import java.io.PrintStream;
 import java.util.Scanner;
 
 public class Menu {
-    private final InputStream in;
-    private final PrintStream out;
     private final MenuCommand[] menuOptions;
+    private Scanner input;
 
-    public Menu(MenuCommand[] menuOptions, InputStream in, PrintStream out) {
+    public Menu(MenuCommand[] menuOptions) {
         this.menuOptions = menuOptions;
-        this.in = in;
-        this.out = out;
     }
 
     public void startShowing() {
+        input = new Scanner(System.in);
         printMenu();
     }
 
     private void printMenu() {
-        out.println("===========Menu===========");
+        System.out.println("===========Menu===========");
         for (int i = 0; i < menuOptions.length; i++) {
-            out.println((i + 1) + ". " + menuOptions[i].menuOptionString());
+            System.out.println((i + 1) + ". " + menuOptions[i].menuOptionString());
         }
 
         handleMenuInput();
     }
 
     private void handleMenuInput() {
-        Scanner input = new Scanner(in);
         Command cmd = null;
+
+        if(!input.hasNextLine()) return;
 
         String menuItem = input.nextLine();
         try {
@@ -40,9 +36,9 @@ public class Menu {
             cmd = menuOptions[menuNum];
             cmd.execute();
         } catch (Exception e) {
-            out.println("Entered invalid menu number! Please try again.\n");
-        } finally {
-            if (!(cmd instanceof ExitCommand)) printMenu();
+            System.out.println("Entered invalid menu number! Please try again.\n");
         }
+
+        if (!(cmd instanceof ExitCommand)) printMenu();
     }
 }

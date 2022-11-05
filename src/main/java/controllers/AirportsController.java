@@ -1,10 +1,11 @@
 package controllers;
 
-import db.airport.AirportsRepository;
-import db.schedule.ScheduleRepository;
+import persistence.airport.AirportsRepository;
+import persistence.schedule.ScheduleRepository;
 import model.Airport;
 import model.Flight;
 
+import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -19,7 +20,7 @@ public class AirportsController {
         this.scheduleRepository = scheduleRepository;
     }
 
-    public void getNumberOfPlanesInAirports() {
+    public void getNumberOfPlanesInAirports(Clock clock) {
         List<Flight> flights = scheduleRepository.loadSchedule();
         Map<Integer, Integer> res = new HashMap<>();
 
@@ -27,12 +28,10 @@ public class AirportsController {
 
         groupedFlightsByPlane.forEach((planeId, planeFlights) -> {
             planeFlights.sort(Comparator.comparing(Flight::getEndTime).reversed());
-            LocalDateTime now = LocalDateTime.now();
+            LocalDateTime now = LocalDateTime.now(clock);
 
             for (Flight flight : planeFlights) {
-                LocalDateTime start = flight.getStartTime();
                 LocalDateTime end = flight.getEndTime();
-                if (start.isAfter(now) && end.isBefore(now)) break;
 
                 Integer id = flight.getArrivalAirportId();
 
@@ -40,6 +39,7 @@ public class AirportsController {
                     if (res.containsKey(id)) {
                         res.put(id, res.get(id) + 1);
                     } else res.put(id, 1);
+                    break;
                 }
             }
         });

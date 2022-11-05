@@ -3,6 +3,8 @@ package menu.airports;
 import controllers.AirportsController;
 import menu.MenuCommand;
 
+import java.time.Clock;
+
 public class ShowNumberOfPlanesCommand implements MenuCommand {
     AirportsController controller;
 
@@ -12,7 +14,7 @@ public class ShowNumberOfPlanesCommand implements MenuCommand {
 
     @Override
     public void execute() {
-        controller.getNumberOfPlanesInAirports();
+        controller.getNumberOfPlanesInAirports(Clock.systemDefaultZone());
     }
 
     @Override

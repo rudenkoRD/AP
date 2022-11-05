@@ -1,11 +1,12 @@
 package controllers;
 
-import db.plane.PlanesRepository;
-import db.schedule.ScheduleRepository;
+import persistence.plane.PlanesRepository;
+import persistence.schedule.ScheduleRepository;
 import model.Flight;
 import model.Plane;
 import utils.DateUtils;
 
+import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -41,14 +42,14 @@ public class ScheduleController {
         }
     }
 
-    public void getRemainingFlyTime() {
+    public void getRemainingFlyTime(Clock clock) {
         List<Flight> flights = repository.loadSchedule();
         List<Plane> planes = planesRepository.readPlanes();
 
         Map<Long, Plane> res = new TreeMap<>();
 
         for (Plane plane : planes) {
-            long flightTime = remainingFlightTime(plane, flights);
+            long flightTime = remainingFlightTime(plane, flights, clock);
             if (flightTime != -1) res.put(flightTime, plane);
         }
 
@@ -59,12 +60,12 @@ public class ScheduleController {
         res.forEach((key, value) -> System.out.printf("Plane %d, remaining fly time %d minutes\n", value.getId(), key));
     }
 
-    private long remainingFlightTime(Plane plane, List<Flight> flights) {
+    private long remainingFlightTime(Plane plane, List<Flight> flights, Clock clock) {
         for (Flight flight : flights) {
-            LocalDateTime now = LocalDateTime.now();
+            LocalDateTime now = LocalDateTime.now(clock);
             if (flight.getPlaneId() != plane.getId()) continue;
 
-            if (flight.getEndTime().isAfter(now) && flight.getStartTime().isBefore(now)) {
+            if (flight.isNow(clock)) {
                 return ChronoUnit.MINUTES.between(now, flight.getEndTime());
             }
         }

@@ -1,4 +1,4 @@
-package db.documentation;
+package persistence.documentation;
 
 import model.Documentation;
 

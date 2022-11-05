@@ -2,7 +2,7 @@ package model;
 
 import org.json.simple.JSONObject;
 import utils.DateUtils;
-import utils.Generated;
+import utils.IgnoreInTests;
 
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -19,17 +19,17 @@ public class Pilot {
     private final double flyingHours;
     private final PilotType type;
 
-    @Generated
+    @IgnoreInTests
     public int getSalary() {
         return salary;
     }
 
-    @Generated
+    @IgnoreInTests
     public int getId() {
         return id;
     }
 
-    @Generated
+    @IgnoreInTests
     public long age() {
         LocalDate now = LocalDate.now();
 
@@ -97,7 +97,7 @@ public class Pilot {
         return json;
     }
 
-    @Generated
+    @IgnoreInTests
     @Override
     public String toString() {
         return "Pilot{" +
@@ -110,7 +110,7 @@ public class Pilot {
                 '}';
     }
 
-    @Generated
+    @IgnoreInTests
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -119,7 +119,7 @@ public class Pilot {
         return id == pilot.id && salary == pilot.salary && Double.compare(pilot.flyingHours, flyingHours) == 0 && Objects.equals(name, pilot.name) && Objects.equals(birthday, pilot.birthday) && type == pilot.type;
     }
 
-    @Generated
+    @IgnoreInTests
     @Override
     public int hashCode() {
         return Objects.hash(id, name, birthday, salary, flyingHours, type);

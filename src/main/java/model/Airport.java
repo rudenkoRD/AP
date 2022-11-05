@@ -1,7 +1,7 @@
 package model;
 
 import org.json.simple.JSONObject;
-import utils.Generated;
+import utils.IgnoreInTests;
 
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -19,7 +19,7 @@ public class Airport {
         this.maxCapacity = maxCapacity;
     }
 
-    @Generated
+    @IgnoreInTests
     public int getId() {
         return id;
     }
@@ -58,7 +58,7 @@ public class Airport {
         return json;
     }
 
-    @Generated
+    @IgnoreInTests
     @Override
     public String toString() {
         return "Airport{" +
@@ -68,7 +68,7 @@ public class Airport {
                 '}';
     }
 
-    @Generated
+    @IgnoreInTests
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -77,7 +77,7 @@ public class Airport {
         return id == airport.id && maxCapacity == airport.maxCapacity && Objects.equals(location, airport.location);
     }
 
-    @Generated
+    @IgnoreInTests
     @Override
     public int hashCode() {
         return Objects.hash(id, location, maxCapacity);

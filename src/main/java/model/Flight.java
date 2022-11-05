@@ -3,7 +3,7 @@ package model;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import utils.DateUtils;
-import utils.Generated;
+import utils.IgnoreInTests;
 
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -22,42 +22,42 @@ public class Flight {
     private final int planeId;
     private final int[] pilotIds;
 
-    @Generated
+    @IgnoreInTests
     public int getId() {
         return id;
     }
 
-    @Generated
+    @IgnoreInTests
     public int getStartAirportId() {
         return startAirportId;
     }
 
-    @Generated
+    @IgnoreInTests
     public int getArrivalAirportId() {
         return arrivalAirportId;
     }
 
-    @Generated
+    @IgnoreInTests
     public LocalDateTime getStartTime() {
         return startTime;
     }
 
-    @Generated
+    @IgnoreInTests
     public LocalDateTime getEndTime() {
         return endTime;
     }
 
-    @Generated
+    @IgnoreInTests
     public int getPlaneId() {
         return planeId;
     }
 
-    @Generated
+    @IgnoreInTests
     public int[] getPilotIds() {
         return pilotIds;
     }
 
-    @Generated
+    @IgnoreInTests
     public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
     }
@@ -141,7 +141,7 @@ public class Flight {
         return json;
     }
 
-    @Generated
+    @IgnoreInTests
     @Override
     public String toString() {
         return "Flight{" +
@@ -155,7 +155,7 @@ public class Flight {
                 '}';
     }
 
-    @Generated
+    @IgnoreInTests
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -164,7 +164,7 @@ public class Flight {
         return id == flight.id && startAirportId == flight.startAirportId && arrivalAirportId == flight.arrivalAirportId && planeId == flight.planeId && Objects.equals(startTime, flight.startTime) && Objects.equals(endTime, flight.endTime) && Arrays.equals(pilotIds, flight.pilotIds);
     }
 
-    @Generated
+    @IgnoreInTests
     @Override
     public int hashCode() {
         int result = Objects.hash(id, startAirportId, arrivalAirportId, startTime, endTime, planeId);

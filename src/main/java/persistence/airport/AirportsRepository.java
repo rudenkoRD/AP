@@ -1,4 +1,4 @@
-package db.airport;
+package persistence.airport;
 
 import model.Airport;
 

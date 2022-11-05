@@ -1,4 +1,4 @@
-package db.pilot;
+package persistence.pilot;
 
 import model.Pilot;
 

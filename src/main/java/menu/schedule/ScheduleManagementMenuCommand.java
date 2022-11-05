@@ -1,8 +1,8 @@
 package menu.schedule;
 
 import controllers.ScheduleController;
-import db.plane.AppPlanesRepository;
-import db.schedule.AppScheduleRepository;
+import persistence.plane.AppPlanesRepository;
+import persistence.schedule.AppScheduleRepository;
 import menu.ExitCommand;
 import menu.Menu;
 import menu.MenuCommand;

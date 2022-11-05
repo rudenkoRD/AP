@@ -1,8 +1,8 @@
 package menu.pilots;
 
 import controllers.PilotsController;
-import db.pilot.AppPilotsRepository;
-import db.schedule.AppScheduleRepository;
+import persistence.pilot.AppPilotsRepository;
+import persistence.schedule.AppScheduleRepository;
 import menu.ExitCommand;
 import menu.Menu;
 import menu.MenuCommand;

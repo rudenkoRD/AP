@@ -1,7 +1,7 @@
 package model;
 
 import org.json.simple.JSONObject;
-import utils.Generated;
+import utils.IgnoreInTests;
 
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -15,17 +15,17 @@ public class Plane {
     private final int capacity;
     private final double maxFlightDistance;
 
-    @Generated
+    @IgnoreInTests
     public int getId() {
         return id;
     }
 
-    @Generated
+    @IgnoreInTests
     public int getCapacity() {
         return capacity;
     }
 
-    @Generated
+    @IgnoreInTests
     public double getMaxFlightDistance() {
         return maxFlightDistance;
     }
@@ -83,7 +83,7 @@ public class Plane {
         return json;
     }
 
-    @Generated
+    @IgnoreInTests
     @Override
     public String toString() {
         return "Plane{" +
@@ -95,7 +95,7 @@ public class Plane {
                 '}';
     }
 
-    @Generated
+    @IgnoreInTests
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -104,7 +104,7 @@ public class Plane {
         return id == plane.id && Double.compare(plane.fuelConsumption, fuelConsumption) == 0 && capacity == plane.capacity && Double.compare(plane.maxFlightDistance, maxFlightDistance) == 0 && type == plane.type;
     }
 
-    @Generated
+    @IgnoreInTests
     @Override
     public int hashCode() {
         return Objects.hash(id, type, fuelConsumption, capacity, maxFlightDistance);

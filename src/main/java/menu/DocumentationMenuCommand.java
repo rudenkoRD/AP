@@ -1,7 +1,7 @@
 package menu;
 
-import db.documentation.AppDocumentationRepository;
-import db.documentation.DocumentationRepository;
+import persistence.documentation.AppDocumentationRepository;
+import persistence.documentation.DocumentationRepository;
 import model.Documentation;
 
 public class DocumentationMenuCommand implements MenuCommand {

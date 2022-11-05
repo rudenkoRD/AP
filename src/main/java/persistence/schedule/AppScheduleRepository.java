@@ -1,9 +1,10 @@
-package db.schedule;
+package persistence.schedule;
 
 import model.Flight;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import utils.IgnoreInTests;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -12,8 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AppScheduleRepository implements ScheduleRepository {
-    private static final String FILE = "src/lab6/db/data/schedule.json";
+    private static final String FILE = "src/main/resources/schedule.json";
 
+    @IgnoreInTests
     @Override
     public List<Flight> loadSchedule() {
         JSONParser jsonParser = new JSONParser();
@@ -35,6 +37,7 @@ public class AppScheduleRepository implements ScheduleRepository {
         }
     }
 
+    @IgnoreInTests
     @Override
     public void addFlight(Flight newFlight) {
         List<Flight> flights = loadSchedule();
@@ -48,6 +51,7 @@ public class AppScheduleRepository implements ScheduleRepository {
         writeFlights(flights);
     }
 
+    @IgnoreInTests
     @Override
     public void updateFlight(int id, LocalDateTime endTime) {
         List<Flight> flights = loadSchedule();
@@ -69,6 +73,7 @@ public class AppScheduleRepository implements ScheduleRepository {
         writeFlights(flights);
     }
 
+    @IgnoreInTests
     private void writeFlights(List<Flight> flights) {
         JSONArray flightJson = new JSONArray();
         flights.forEach(flight -> flightJson.add(flight.toJson()));

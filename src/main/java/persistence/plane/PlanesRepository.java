@@ -1,4 +1,4 @@
-package db.plane;
+package persistence.plane;
 
 import model.Plane;
 
