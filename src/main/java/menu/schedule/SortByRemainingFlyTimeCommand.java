@@ -3,6 +3,8 @@ package menu.schedule;
 import controllers.ScheduleController;
 import menu.MenuCommand;
 
+import java.time.Clock;
+
 public class SortByRemainingFlyTimeCommand implements MenuCommand {
     final ScheduleController controller;
 
@@ -12,7 +14,7 @@ public class SortByRemainingFlyTimeCommand implements MenuCommand {
 
     @Override
     public void execute() {
-        controller.getRemainingFlyTime();
+        controller.getRemainingFlyTime(Clock.systemDefaultZone());
     }
 
     @Override
